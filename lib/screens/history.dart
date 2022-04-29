@@ -56,8 +56,8 @@ class _HistoryState extends State<History> {
       
        return Container(
         margin: const EdgeInsets.only(bottom: 32,left: 30,right: 20),
-        height: 80,
-        width: 5,
+        height: 85,
+        width: 3,
         decoration: BoxDecoration(
          color:  Colors.white60,
             // boxShadow: [
@@ -73,7 +73,6 @@ class _HistoryState extends State<History> {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[   
               Column(
@@ -89,6 +88,7 @@ class _HistoryState extends State<History> {
                     
                  ],
               ),
+              SizedBox(width: 70),
               Column(
               children: <Widget>[
                 Padding(
@@ -103,7 +103,6 @@ class _HistoryState extends State<History> {
                     ),
                   ), 
                   SizedBox(
-                    height: 9,
                   ),
                     Text(
                     formatted1,

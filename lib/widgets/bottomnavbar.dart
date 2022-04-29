@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nmithacks/providPerm/google_sign_in.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:provider/provider.dart';
+
+import '../screens/EmergencyContact.dart';
 // ignore: import_of_legacy_library_into_null_safe
 
 //Creating a Bottom Nav Bar which contains 3 icons
@@ -73,7 +75,7 @@ class BottomNavBar extends StatelessWidget {
           BottomNavItem(
             svgScr: "images/contacts.jpg",
             press: (){
-                    //  Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyContacts()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyContact()));
             },
           ),
           BottomNavItem(
