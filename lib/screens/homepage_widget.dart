@@ -346,8 +346,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               height: 66.0,
               color: Colors.red,
               onPressed: () {
-                // Navigator.pushReplacement(context,
-                //         MaterialPageRoute(builder: (context) => GetLocation()));
+                Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => GetLocation()));
               },
             ),
             SizedBox(
