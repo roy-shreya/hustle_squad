@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:nmithacks/providPerm/allPermissions.dart';
+import 'package:nmithacks/screens/getLocation.dart';
+import 'package:nmithacks/screens/history.dart';
 import 'package:nmithacks/widgets/Btn.dart';
 import 'package:nmithacks/widgets/bottomnavbar.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -367,9 +369,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         fontSize: 15,
                         fontWeight: FontWeight.w600),
                   ),
+                  // ignore: prefer_const_constructors
                 ],
-              ),
-            )
+              ),  
+            ),
+              History(),
+
           ],
         ),
       ),
