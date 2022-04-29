@@ -29,7 +29,7 @@ class _ContactsListState extends State<ContactsList> {
                 child: Text(
                   "There are no emergency contacts",
                   textAlign: TextAlign.end,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
               ),
             );
@@ -48,20 +48,11 @@ class _ContactsListState extends State<ContactsList> {
   getemergContacts(AsyncSnapshot<QuerySnapshot> snapshot) {
     return snapshot.data!.docs.map((e) {
       return Container(
-        margin: const EdgeInsets.only(bottom: 32),
+        margin: const EdgeInsets.only(bottom: 32,left: 20,right:20),
+       // width: 20,
         height: 88,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Color(0xff5089C6), Color(0xff5089C6)],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black12.withOpacity(0.4),
-                  blurRadius: 8,
-                  spreadRadius: 2,
-                  offset: Offset(4, 4))
-            ],
+          color: Colors.white,
             borderRadius: BorderRadius.all(
               Radius.circular(24),
             )),
@@ -69,15 +60,17 @@ class _ContactsListState extends State<ContactsList> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: <Widget>[
+              SizedBox(width: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
+                  Icon(Icons.person_rounded,size: 40),
                   Padding(
                     padding: const EdgeInsets.only(left: 0.0),
                     child: Text(
                       e['name'],
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 21,
                           fontWeight: FontWeight.w400,
                           fontFamily: 'Sans-Pro'),
@@ -108,13 +101,13 @@ class _ContactsListState extends State<ContactsList> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 24.0),
+                    padding: const EdgeInsets.only(left: 160.0),
                     child: Text(
                       e['number'],
                       textAlign: TextAlign.end,
                       style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
+                          fontSize: 17,
+                          color: Color(0xffFEAD1D),
                           fontFamily: 'Sans-Pro'),
                     ),
                   ),
