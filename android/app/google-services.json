@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "120952792065",
+    "project_id": "saathi-f0c55",
+    "storage_bucket": "saathi-f0c55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120952792065:android:55ec1377ffde1d39e2cc00",
+        "android_client_info": {
+          "package_name": "com.example.saathi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120952792065-7ebpetcs79ahbfnbb43lpj8n3e0e10c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxeOzR71VGCd3rp0YueOB_0sKD8EJ6RQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120952792065-7ebpetcs79ahbfnbb43lpj8n3e0e10c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120952792065:android:e178f9e21ec9cca4e2cc00",
+        "android_client_info": {
+          "package_name": "com.example.saathi_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120952792065-7m3jnig4r5uu0fo3latj3h01p72t5m3o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.saathi_app",
+            "certificate_hash": "762082139ff8a238790d83391a7672ae50b3ef23"
+          }
+        },
+        {
+          "client_id": "120952792065-c3ggd8gifl9dsf8tsrjp378vhscu8opb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.saathi_app",
+            "certificate_hash": "1b4638db6012dce1277c9f2f72d26c8f7d5a9339"
+          }
+        },
+        {
+          "client_id": "120952792065-tmjitdg0g5829dfkj520a2khdla7ip47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.saathi_app",
+            "certificate_hash": "49e580c1d3c4e6b5e7e51b9eb1198bcdea50e68a"
+          }
+        },
+        {
+          "client_id": "120952792065-7ebpetcs79ahbfnbb43lpj8n3e0e10c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxeOzR71VGCd3rp0YueOB_0sKD8EJ6RQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120952792065-7ebpetcs79ahbfnbb43lpj8n3e0e10c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
