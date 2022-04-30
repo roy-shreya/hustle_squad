@@ -6,7 +6,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:nmithacks/screens/homepage_widget.dart';
-import 'package:nmithacks/screens/notification.dart';
 import 'package:nmithacks/welcome.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:telephony/telephony.dart';
@@ -283,8 +282,6 @@ static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
     print('The list is');
     print(emergencyRadiusContacts);
     _sendSMS("I NEED HELP! Mylocation: $locationMessage");
-     final pushNotificationService = PushNotificationService(_firebaseMessaging);
-    pushNotificationService.initialise();
   }
 
   Future<void> _sendSMS(msg) async {
@@ -304,6 +301,16 @@ static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("SOS Page",style: TextStyle(color: Colors.black),),
+        backgroundColor: Color(0xffE3CBF4),
+        leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () =>   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePageWidget())),
+  ),
+  
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -317,10 +324,10 @@ static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
         child: Column(
           children: <Widget>[
             const SizedBox(
-              height: 110,
+              height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 16, top: 0.0),
+              padding: const EdgeInsets.only(left: 20, right: 16, top: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
