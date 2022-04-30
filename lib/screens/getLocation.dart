@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, deprecated_member_use
+
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,7 +27,7 @@ class _GetLocationState extends State<GetLocation> {
   final user = FirebaseAuth.instance.currentUser;
   final _firestore = FirebaseFirestore.instance;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
-  StreamController<int> _events = new StreamController<int>();
+  StreamController<int> _events = StreamController<int>();
   late Stream<List<DocumentSnapshot>> stream;
 
   final geo = Geoflutterfire();
@@ -40,10 +42,10 @@ class _GetLocationState extends State<GetLocation> {
   @override
   void initState() {
     super.initState();
-    _events = new StreamController<int>();
+    _events = StreamController<int>();
     _events.add(10);
     _startTimer();
-    new Future.delayed(Duration.zero, () {
+    Future.delayed(Duration.zero, () {
       alertD(context);
     });
   }
@@ -94,7 +96,7 @@ class _GetLocationState extends State<GetLocation> {
             stream: _events.stream,
             builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
               print(snapshot.data.toString());
-              return Container(
+              return SizedBox(
                 height: 215,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,7 +115,7 @@ class _GetLocationState extends State<GetLocation> {
                       height: 5,
                     ),
                     Text(
-                      '${snapshot.data.toString()}',
+                      snapshot.data.toString(),
                       style: const TextStyle(fontSize: 25),
                     ),
                     const SizedBox(
@@ -141,8 +143,8 @@ class _GetLocationState extends State<GetLocation> {
                                   borderRadius: BorderRadius.circular(25),
                                   gradient: const LinearGradient(
                                       colors: [
-                                        const Color(0xff09009B),
-                                        const Color(0xff193498),
+                                        Color(0xff09009B),
+                                        Color(0xff193498),
                                       ],
                                       begin: Alignment.topLeft,
                                       end: Alignment.bottomRight),
@@ -175,7 +177,7 @@ class _GetLocationState extends State<GetLocation> {
 
   Future<void> getCurrentLocation() async {
     DateTime now = DateTime.now();
-    Random random = new Random();
+    Random random = Random();
     int randomNumber = random.nextInt(100);
     Timestamp myTimeStamp = Timestamp.fromDate(now);
 
@@ -233,17 +235,20 @@ if(this.mounted){
           .collection('emergencyContacts')
           .get()
           .then((querySnapshot) {
-        querySnapshot.docs.forEach((ec) {
+        for (var ec in querySnapshot.docs) {
           emergencyRadiusContacts.add(ec.data()['number']);
-        });
+        }
         getRadiusGroup();
       });
     } catch (e) {
       print(e.toString());
       return null;
     }
-    //print("The emergency contacts list:");
-    //print(emergencyRadiusContacts);
+  //   final Telephony telephony = Telephony.instance;
+  //   for (var phn in emergencyRadiusContacts) {
+  //     telephony.dialPhoneNumber(phn);   
+  // }
+
   }
 
   Future getRadiusGroup() async {
@@ -254,7 +259,7 @@ if(this.mounted){
     });
 
     stream.listen((List<DocumentSnapshot> documentList) {
-      documentList.forEach((element) {
+      for (var element in documentList) {
         if (sosPhoneNumber != element.get('contactNo')) {
          // print("Radius number is");
           //print(element.get('contactNo'));
@@ -263,7 +268,7 @@ if(this.mounted){
         } else {
           print('It is the person who is pressing SOS');
         }
-      });
+      }
     });
 
     getPoliceStationDetails();
@@ -278,7 +283,7 @@ if(this.mounted){
     });
     print('The list is');
     print(emergencyRadiusContacts);
-    _sendSMS("I NEED HELP! Mylocation: $locationMessage");
+    _sendSMS("Name:"+user!.displayName.toString()+"\n"+ "NEEDS YOUR HELP at this location: $locationMessage");
   }
 
   Future<void> _sendSMS(msg) async {
@@ -289,6 +294,7 @@ if(this.mounted){
         message: msg,
       );
     }
+    
   }
 
 //   late final FirebaseMessaging _messaging;
@@ -320,10 +326,10 @@ if(this.mounted){
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SOS Page",style: TextStyle(color: Colors.black),),
-        backgroundColor: Color(0xffE3CBF4),
+        title: const Text("SOS Page",style: TextStyle(color: Colors.black),),
+        backgroundColor: const Color(0xffE3CBF4),
         leading: IconButton(
-    icon: Icon(Icons.arrow_back, color: Colors.black),
+    icon: const Icon(Icons.arrow_back, color: Colors.black),
     onPressed: () =>   Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomePageWidget())),
   ),
@@ -389,24 +395,22 @@ if(this.mounted){
                 
               ),
             ), 
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
-              new Container(
-                    child: new Image.asset(
-                          'images/sos.png',
-                          height: 300.0,
-                          fit: BoxFit.fitWidth,
-                        )
-                 ),  
+              Image.asset(
+                    'images/sos.png',
+                    height: 300.0,
+                    fit: BoxFit.fitWidth,
+                  ),  
             const SizedBox(
               height: 50,
             ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20.0),
+                  padding: const EdgeInsets.only(left: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                               "Your current location",
                               style: TextStyle(
@@ -423,12 +427,12 @@ if(this.mounted){
               height: 10,
             ),
               Padding(
-                padding: EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     GestureDetector(
-                child: Text("Link", style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue)),
+                child: const Text("Link", style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue)),
                 onTap: () async {
                   if (await canLaunch(locationMessage)) launch(locationMessage);
                 },

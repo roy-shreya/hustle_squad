@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class _HistoryState extends State<History> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: 240.0,
         width: 330.0,
         child: StreamBuilder<QuerySnapshot>(
@@ -108,8 +110,8 @@ class _HistoryState extends State<History> {
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Ubuntu'),
+                        fontWeight: FontWeight.w800,
+                        fontFamily: 'Fira-Sans'),
                   ),
                 ),
                 const SizedBox(
@@ -121,8 +123,8 @@ class _HistoryState extends State<History> {
                   style: const TextStyle(
                       color: Colors.orange,
                       fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Ubuntu'),
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Fira-Sans'),
                 ),
               ]),
             ],

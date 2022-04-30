@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nmithacks/providPerm/google_sign_in.dart';
+import 'package:nmithacks/screens/google_maps.dart';
 import 'package:nmithacks/screens/homepage_widget.dart';
 import 'package:nmithacks/screens/profile.dart';
 
@@ -72,7 +73,8 @@ class BottomNavBar extends StatelessWidget {
           BottomNavItem(
             svgScr: "images/profile.png",
             press: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile()));      
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile()));   
+                      // Navigator.push(context, MaterialPageRoute(builder: (context)=> GoogleMaps()));         
             },
           ),
           BottomNavItem(

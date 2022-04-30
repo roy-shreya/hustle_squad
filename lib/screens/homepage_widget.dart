@@ -28,7 +28,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late String mobile;
   late Timer timer;
   var loc = location.Location();
-    late StreamSubscription<location.LocationData> locationSubscription;
+  late StreamSubscription<location.LocationData> locationSubscription;
 
 
   @override
