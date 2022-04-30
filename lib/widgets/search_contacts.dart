@@ -133,7 +133,7 @@ class _SearchContactsState extends State<SearchContacts> {
           child: FloatingActionButton(
               mini: true,
               child: Icon(Icons.done_rounded),
-              backgroundColor: Color(0xff5089C6),
+              backgroundColor: Color(0xff572489),
               onPressed: () {
                 Navigator.of(context, rootNavigator: true).pop('dialog');
               }),

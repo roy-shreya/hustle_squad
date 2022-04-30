@@ -44,6 +44,7 @@ class SignUpWidget extends StatelessWidget {
               "Saathi",
               style: TextStyle(
                   fontSize: 56,
+                  letterSpacing: 1.0,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Yanone'),
             ),
@@ -55,7 +56,7 @@ class SignUpWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: size.width / 20,
                 fontWeight: FontWeight.w600,
-                fontFamily: 'Sans-Pro',
+                fontFamily: 'Fira-Sans',
               ),
             ),
             SizedBox(

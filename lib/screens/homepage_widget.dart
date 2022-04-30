@@ -28,6 +28,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late String mobile;
   late Timer timer;
   var loc = location.Location();
+    late StreamSubscription<location.LocationData> locationSubscription;
+
 
   @override
   void initState() {
@@ -38,26 +40,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     askLocationPermission();
   }
 
-  // @override
-  // void deactivate() {
-  //   // TODO: implement deactivate
-  //   locationSubscription.cancel();
-  //   super.deactivate();
-  // }
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    locationSubscription.cancel();
+    super.deactivate();
+  }
 
-  // @override
-  // void dispose() {
-  //   locationSubscription.cancel();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    locationSubscription.cancel();
+    super.dispose();
+  }
 
-  // @override
-  // void didUpdateWidget(covariant HomePageWidget oldWidget) {
-  //   // ignore: todo
-  //   // TODO: implement didUpdateWidget
-  //   super.didUpdateWidget(oldWidget);
-  //   getCurrentLocation();
-  // }
+  @override
+  void didUpdateWidget(covariant HomePageWidget oldWidget) {
+    // ignore: todo
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    getCurrentLocation();
+  }
 
 //Ask location permission
   Future askLocationPermission() async {
@@ -150,7 +152,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     if (!a.exists) {
       users
           .doc(user!.email)
-          .set({'email': user!.email, 'mobile': ""}).whenComplete(() {
+          .set({'name':user!.displayName.toString(),'email': user!.email, 'mobile': ""}).whenComplete(() {
         checkMobile();
       });
     } else {
@@ -206,26 +208,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     users.doc(mobile).set({'contactNo': mobile, 'position': mylocation.data});
 
 
-    // locationSubscription =
-    //     loc.onLocationChanged.listen((location.LocationData currentLocation) {
-    //   print(currentLocation);
-    //   calculate(currentLocation);
-    // });
+    locationSubscription =
+        loc.onLocationChanged.listen((location.LocationData currentLocation) {
+      print(currentLocation);
+      calculate(currentLocation);
+    });
     print("Get Current location called.");
   }
 
 // //Get current location
-//   Future<void> calculate(location.LocationData currentLocation) async {
-//     GeoFirePoint mylocation = geo.point(
-//         latitude: currentLocation.latitude,
-//         longitude: currentLocation.longitude);
+  Future<void> calculate(location.LocationData currentLocation) async {
+    GeoFirePoint mylocation = geo.point(
+        latitude: currentLocation.latitude!,
+        longitude: currentLocation.longitude!);
 
-//     CollectionReference users =
-//         FirebaseFirestore.instance.collection('locations');
-//     users.doc(mobile).set({'contactNo': mobile, 'position': mylocation.data});
-//     // ScaffoldMessenger.of(context)
-//     //      .showSnackBar(SnackBar(content: Text('Location added')));
-//   }
+    CollectionReference users =
+        FirebaseFirestore.instance.collection('locations');
+    users.doc(mobile).set({'contactNo': mobile, 'position': mylocation.data});
+    // ScaffoldMessenger.of(context)
+    //      .showSnackBar(SnackBar(content: Text('Location added')));
+  }
 
 //Dialog box for mobile number entry
   Future<void> _displayTextInputDialog(BuildContext context) async {
@@ -299,8 +301,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       Text(
                         "Welcome " + user!.displayName.toString(),
                         style: TextStyle(
-                            fontSize: 22,
-                            fontFamily: 'Sans-Pro',
+                            fontSize: 26,
+                            fontFamily: 'Yanone',
                             letterSpacing: 0.3,
                             overflow: TextOverflow.fade,
                             color: Colors.black,
