@@ -22,6 +22,8 @@ class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
       return  Container(
+        height: 240.0,
+        width: 330.0,
       child: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
                 .collection('users')
@@ -29,8 +31,30 @@ class _HistoryState extends State<History> {
                 .collection('history')
                 .snapshots(),
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if(!snapshot.hasData) return Text("No history available");
-              else{
+              if(snapshot.data?.size==0) {
+                return Container(
+                  width: 300,
+                  height: 200,
+
+  decoration: BoxDecoration(
+    color: Colors.white38,
+    borderRadius: BorderRadius.circular(10),
+    image: const DecorationImage(
+      image: AssetImage("images/nohistory.png"),
+      fit: BoxFit.contain,
+    ),
+  ),
+  child: Padding(
+    padding: EdgeInsets.only(left: 9.0,top: 210.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("No history available"),
+      ],
+    ),
+  ),
+    );
+              } else{
                 return Expanded(
                   child: new ListView(
                     shrinkWrap: true,
@@ -57,7 +81,7 @@ class _HistoryState extends State<History> {
        return Container(
         margin: const EdgeInsets.only(bottom: 32,left: 30,right: 20),
         height: 80,
-        width: 5,
+        width: 20,
         decoration: BoxDecoration(
          color:  Colors.white60,
             // boxShadow: [

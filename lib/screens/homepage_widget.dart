@@ -277,11 +277,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ]),
           image: DecorationImage(
               image: AssetImage(
-                "images/girl.png",
+                "images/girl1.png",
               ),
               fit: BoxFit.scaleDown,
               scale: 1.5,
-              alignment: Alignment(1, -0.9)),
+              alignment: Alignment(1.7, -0.8)),
         ),
         child: Column(
           children: <Widget>[
@@ -366,13 +366,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     style: TextStyle(
                         fontFamily: 'Sans-Pro',
                         color: Colors.black,
-                        fontSize: 15,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600),
                   ),
                   // ignore: prefer_const_constructors
                 ],
               ),  
             ),
+            // SizedBox(
+            //   height: 40.0,
+            // ),
               History(),
 
           ],

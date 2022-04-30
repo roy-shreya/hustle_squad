@@ -294,6 +294,16 @@ if(this.mounted){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("SOS Page",style: TextStyle(color: Colors.black),),
+        backgroundColor: Color(0xffE3CBF4),
+        leading: IconButton(
+    icon: Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () =>   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePageWidget())),
+  ),
+  
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -307,10 +317,10 @@ if(this.mounted){
         child: Column(
           children: <Widget>[
             const SizedBox(
-              height: 110,
+              height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 16, top: 0.0),
+              padding: const EdgeInsets.only(left: 20, right: 16, top: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

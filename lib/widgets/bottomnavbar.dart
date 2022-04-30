@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nmithacks/providPerm/google_sign_in.dart';
+import 'package:nmithacks/screens/emergencycontacts.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:provider/provider.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -73,7 +74,7 @@ class BottomNavBar extends StatelessWidget {
           BottomNavItem(
             svgScr: "images/contacts.jpg",
             press: (){
-                    //  Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyContacts()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyContacts()));
             },
           ),
           BottomNavItem(
