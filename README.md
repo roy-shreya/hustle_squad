@@ -14,9 +14,8 @@ Majority of these crimes take place in residential area's where people like you 
 It is a network of noble people trying to help each other in times of need and make this society a safer place to live in.
 Here are the main functionalitites of this app:
 1. Send an SOS on the press of a button to the nearest users within a particular radius, emergency contacts and nearest police stations.
-2. Place a call to the emergency contacts.
-3. Managing the user data like email,name,phone number,etc on our cloud storage.
-4. Connect people who geniuenly care and want to help the society become a better place.
+2. Managing the user data like email,name,phone number,etc on our cloud storage.
+3. Connect people who geniuenly care and want to help the society become a better place.
 
 # Tech stack
 The tech stack used are:
