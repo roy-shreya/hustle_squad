@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:nmithacks/screens/homepage_widget.dart';
 import 'package:nmithacks/welcome.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:telephony/telephony.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -46,6 +48,40 @@ class _GetLocationState extends State<GetLocation> {
     _startTimer();
     new Future.delayed(Duration.zero, () {
       alertD(context);
+    });
+    getToken();
+    initMessaging();
+  }
+
+  FirebaseMessaging _messaging = FirebaseMessaging.instance;
+  FlutterLocalNotificationsPlugin flutterLocalNotificationPlugin = FlutterLocalNotificationsPlugin();
+  void getToken(){
+    _messaging.getToken().then((value){
+      String? token = value;
+      print(token);
+    });
+  }
+
+  void initMessaging(){
+    var androiInit = AndroidInitializationSettings('@mipmap/ic_laucher');
+    var iosInit = IOSInitializationSettings();
+    var initSetting = InitializationSettings(android:androiInit,iOS: iosInit);
+    flutterLocalNotificationPlugin = FlutterLocalNotificationsPlugin();
+    flutterLocalNotificationPlugin.initialize(initSetting);
+    var androidDetails = AndroidNotificationDetails('1','Default',
+    importance: Importance.high,
+    channelDescription: "Channel Description",
+    priority: Priority.high
+    );
+    var iosDetails = IOSNotificationDetails();
+    var generalNotificationDetails = 
+    NotificationDetails(android: androidDetails,iOS: iosDetails);
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification!;
+      AndroidNotification android = message.notification!.android!;
+      if(notification != null && android != null){
+        flutterLocalNotificationPlugin.show(notification.hashCode, notification.title, notification.body, generalNotificationDetails);
+      }
     });
   }
 
@@ -282,6 +318,17 @@ static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
     print('The list is');
     print(emergencyRadiusContacts);
     _sendSMS("I NEED HELP! Mylocation: $locationMessage");
+    _sendNotification();
+  }
+
+  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    print("Handling background msg: ${message.messageId}");
+  }
+
+  Future<void>_sendNotification() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    await Firebase.initializeApp();
   }
 
   Future<void> _sendSMS(msg) async {
